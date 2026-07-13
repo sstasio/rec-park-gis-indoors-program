@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Capture Checklist</title>
+<style>
+:root {
+  --green: #1b3a2f; --green2: #2f6f4f; --light: #eef2ef; --grey: #555555;
+  --amber-bg: #fbeee0; --amber: #8a5a00;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  margin: 0; background: #f5f7f6; color: #222; line-height: 1.55;
+}
+.wrap { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
+header.page-header {
+  background: var(--green); color: white; padding: 28px 24px;
+  border-radius: 10px; margin-bottom: 28px;
+}
+header.page-header h1 { margin: 0 0 6px; font-size: 1.55rem; }
+header.page-header p { margin: 0; opacity: 0.85; font-size: 0.92rem; }
+nav.crumbs { font-size: 0.85rem; margin-bottom: 18px; }
+nav.crumbs a { color: var(--green2); text-decoration: none; font-weight: 600; }
+nav.crumbs a:hover { text-decoration: underline; }
+h2 { color: var(--green); font-size: 1.15rem; border-bottom: 2px solid var(--light); padding-bottom: 6px; margin-top: 38px; }
+h3 { color: var(--green2); font-size: 1.0rem; margin-top: 22px; }
+.lede { color: var(--grey); font-size: 0.95rem; }
+p { font-size: 0.93rem; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0 8px; font-size: 0.86rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+thead th { background: var(--green); color: white; text-align: left; padding: 10px 12px; font-weight: 600; }
+tbody td { padding: 10px 12px; border-bottom: 1px solid #e2e6e4; vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--light); }
+tbody tr.highlight { background: var(--amber-bg); }
+tbody tr.good { background: #dcebe2; }
+.badge { display: inline-block; background: var(--green2); color: white; border-radius: 999px; padding: 2px 10px; font-size: 0.72rem; font-weight: 600; margin-right: 6px; }
+.badge-amber { background: var(--amber); }
+.mockup-frame { background: white; border: 1px solid #dfe5e2; border-radius: 10px; padding: 16px; margin: 16px 0; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.mockup-frame img { max-width: 100%; border-radius: 6px; }
+.note { background: var(--amber-bg); border-left: 4px solid var(--amber); padding: 14px 18px; border-radius: 6px; font-size: 0.88rem; color: #4a3200; margin-top: 20px; }
+.callout { background: white; border: 1px solid #dfe5e2; border-radius: 8px; padding: 16px 22px; font-size: 0.9rem; margin: 14px 0; }
+.callout.green { border-left: 4px solid var(--green2); }
+ul, ol { font-size: 0.91rem; }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 20px; }
+.card {
+  background: white; border: 1px solid #dfe5e2; border-radius: 10px; padding: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05); transition: transform 0.15s;
+}
+.card h3 { margin-top: 0; }
+.card a.card-link {
+  display: inline-block; margin-top: 10px; color: white; background: var(--green2);
+  text-decoration: none; padding: 7px 14px; border-radius: 6px; font-size: 0.83rem; font-weight: 600;
+}
+.card a.card-link:hover { background: var(--green); }
+.phase-pill { display:inline-block; font-size:0.7rem; font-weight:700; padding:2px 9px; border-radius:999px; color:white; margin-bottom:8px; }
+footer { margin-top: 50px; font-size: 0.8rem; color: #888; text-align: center; }
+a.download-btn { display: inline-block; background: var(--green2); color: white; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; margin-top: 8px; margin-right: 8px; }
+a.download-btn:hover { background: var(--green); }
+.back-link { display:inline-block; margin-top: 30px; font-size: 0.85rem; color: var(--green2); text-decoration:none; font-weight:600; cursor:pointer; }
+.back-link:hover { text-decoration: underline; }
+@media (max-width: 700px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  thead tr { position: absolute; top: -9999px; left: -9999px; }
+  tbody tr { margin-bottom: 12px; border: 1px solid #e2e6e4; border-radius: 8px; overflow: hidden; }
+  tbody td { border-bottom: 1px solid #eee; }
+  tbody td:before { content: attr(data-label); font-weight: 700; color: var(--green); display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 2px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  
+  <header class="page-header">
+    <h1>Field Capture Checklist</h1>
+    <p>Condensed, printable version of the Field Capture Methodology &mdash; for crews to carry on-site</p>
+  </header>
+  
+<p class="lede">Condensed field reference &mdash; print or save offline. Full explanations are on the Field Capture Methodology page (linked from the Program Overview).</p>
+
+<h2>Before you leave the office</h2>
+<ul>
+<li>&#9744; Phone, Bad Elf Flex/Flex Mini, Insta360/GoPro &mdash; fully charged + spare battery packs</li>
+<li>&#9744; NTRIP login confirmed working (Caltrans CRTN or Point One)</li>
+<li>&#9744; Phone storage cleared</li>
+<li>&#9744; Facility ID + floor list for today's building(s) confirmed</li>
+</ul>
+
+<h2>On arrival</h2>
+<ul>
+<li>&#9744; Connect Bad Elf to NTRIP &rarr; confirm <strong>RTK Fix</strong> (not Float)</li>
+<li>&#9744; Pair Bad Elf to PIX4Dcatch via Bluetooth &rarr; set/verify camera offset</li>
+<li>&#9744; Set 3&ndash;5 exterior control points</li>
+</ul>
+
+<h2>Pass 1 &mdash; Exterior</h2>
+<ul>
+<li>&#9744; Walk full perimeter, fixed phone angle, steady pace</li>
+<li>&#9744; Vary distance/height per fa&ccedil;ade &mdash; no robotic straight lines</li>
+<li>&#9744; Capture roofline/eaves from ground, angled up</li>
+<li>&#9744; Close the loop back to start point</li>
+</ul>
+
+<h2>Pass 2 &mdash; Roof (decision required)</h2>
+<ul>
+<li>&#9744; Safe code-compliant access + fall protection? &rarr; walk it like an interior floor</li>
+<li>&#9744; No safe access? &rarr; <strong>do not go up</strong> &mdash; use EagleView oblique imagery instead</li>
+<li>&#9744; Record capture method used in Survey123 (Roof capture method field)</li>
+</ul>
+
+<h2>Pass 3 &mdash; Interior (per floor)</h2>
+<ul>
+<li>&#9744; One PIX4Dcatch session per floor</li>
+<li>&#9744; Steady pace, fixed angle, ~90% overlap</li>
+<li>&#9744; Pause at stairwells/elevators for control tie-in</li>
+<li>&#9744; Loop + figure-eight pattern for irregular layouts</li>
+</ul>
+
+<h2>Pass 4 &mdash; 360&deg; Imagery</h2>
+<ul>
+<li>&#9744; Station every ~10&ndash;15 ft or room center</li>
+<li>&#9744; Consistent height + level</li>
+<li>&#9744; All lights on in dark rooms; avoid direct sun glare</li>
+<li>&#9744; Note position/room per pano</li>
+</ul>
+
+<h2>Pass 5 &mdash; Asset Tags / Barcodes</h2>
+<ul>
+<li>&#9744; Standard iPhone camera, tap-to-focus, fill the frame</li>
+<li>&#9744; Flash/flashlight in low light</li>
+<li>&#9744; Shoot barcodes square-on and flat</li>
+<li>&#9744; Attach each photo + tag ID to the Survey123 Asset Tag Photos section</li>
+</ul>
+
+<h2>Before leaving the building</h2>
+<ul>
+<li>&#9744; QA spot-check: tape-measure one known distance vs. the live model</li>
+<li>&#9744; File naming confirmed: Facility ID + floor number on every session</li>
+<li>&#9744; Submit/sync Survey123 record</li>
+</ul>
+
+  <a class="back-link" onclick="history.back()">&larr; Back</a>
+  <footer>Rec &amp; Park GIS Indoors Program &mdash; internal reference document</footer>
+</div>
+</body>
+</html>
