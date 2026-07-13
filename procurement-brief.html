@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GIS Field Equipment &amp; Services Procurement Brief</title>
+<style>
+:root { --green: #1b3a2f; --green2: #2f6f4f; --light: #eef2ef; --grey: #555555; --amber-bg: #fbeee0; --amber: #8a5a00; }
+* { box-sizing: border-box; }
+body { font-family: "Segoe UI", Arial, Helvetica, sans-serif; margin: 0; background: #f5f7f6; color: #222; line-height: 1.55; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
+header.page-header { background: var(--green); color: white; padding: 28px 24px; border-radius: 10px; margin-bottom: 28px; }
+header.page-header h1 { margin: 0 0 6px; font-size: 1.55rem; }
+header.page-header p { margin: 0; opacity: 0.85; font-size: 0.92rem; }
+h2 { color: var(--green); font-size: 1.15rem; border-bottom: 2px solid var(--light); padding-bottom: 6px; margin-top: 38px; }
+h3 { color: var(--green2); font-size: 1.0rem; margin-top: 22px; }
+p { font-size: 0.93rem; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0 8px; font-size: 0.86rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+thead th { background: var(--green); color: white; text-align: left; padding: 10px 12px; font-weight: 600; }
+tbody td { padding: 10px 12px; border-bottom: 1px solid #e2e6e4; vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--light); }
+tbody tr.highlight { background: var(--amber-bg); }
+tbody tr.good { background: #dcebe2; }
+.note { background: var(--amber-bg); border-left: 4px solid var(--amber); padding: 14px 18px; border-radius: 6px; font-size: 0.88rem; color: #4a3200; margin-top: 20px; }
+.back-link { display:inline-block; margin-top: 30px; font-size: 0.85rem; color: var(--green2); text-decoration:none; font-weight:600; cursor:pointer; }
+.back-link:hover { text-decoration: underline; }
+footer { margin-top: 50px; font-size: 0.8rem; color: #888; text-align: center; }
+@media (max-width: 700px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  thead tr { position: absolute; top: -9999px; left: -9999px; }
+  tbody tr { margin-bottom: 12px; border: 1px solid #e2e6e4; border-radius: 8px; overflow: hidden; }
+  tbody td { border-bottom: 1px solid #eee; }
+  tbody td:before { content: attr(data-label); font-weight: 700; color: var(--green); display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 2px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>GIS Field Equipment &amp; Services Procurement Brief</h1>
+    <p>With decision justification &mdash; Rec &amp; Park Infrastructure Assessment Program</p>
+  </header>
+<h2>Executive Summary</h2>
+<p>This brief recommends a minimal, service-first equipment approach for building the department's GIS capture program across building interiors,
+outdoor hardscape, and underground utilities. The guiding principle throughout: <strong>own only what is used continuously and cheaply maintained;
+rent or contract anything specialized, infrequent, or already available through an existing city resource.</strong> Total new hardware spend is under
+$2,500, with aerial imagery needs met through existing/low-cost service accounts (EagleView, Spexi) rather than a drone purchase.</p>
+<h2>Recommendation Summary</h2>
+<table>
+<thead><tr><th>Priority</th><th>Decision</th><th>Est. Cost</th></tr></thead>
+<tbody>
+<tr class="good"><td data-label="Priority">1</td><td data-label="Decision">Buy: Bad Elf Flex Mini (RTK GNSS receiver) + RTK correction subscription</td><td data-label="Cost">$500&ndash;$2,000 + ~$50&ndash;100/mo</td></tr>
+<tr><td data-label="Priority">2</td><td data-label="Decision">Do: formalize data governance / schema standards (no purchase)</td><td data-label="Cost">$0 &mdash; staff time</td></tr>
+<tr class="good"><td data-label="Priority">3</td><td data-label="Decision">Use: EagleView (existing city account) as primary outdoor imagery source</td><td data-label="Cost">$0 incremental</td></tr>
+<tr><td data-label="Priority">4</td><td data-label="Decision">Keep: Spexi account as supplemental/on-demand source only</td><td data-label="Cost">Pay-per-use, as needed</td></tr>
+<tr class="highlight"><td data-label="Priority">5</td><td data-label="Decision">Do NOT buy: in-house mapping drone</td><td data-label="Cost">$0 (avoided $7K&ndash;15K + ongoing burden)</td></tr>
+<tr><td data-label="Priority">6</td><td data-label="Decision">Buy: rugged phone cases + battery packs for field crews</td><td data-label="Cost">$50&ndash;$150/kit</td></tr>
+<tr><td data-label="Priority">7</td><td data-label="Decision">Contract: GPR / utility locating on a per-project basis</td><td data-label="Cost">Contract per-project</td></tr>
+</tbody>
+</table>
+<h2>Justification &mdash; Why Each Decision Was Made</h2>
+<h3>1. RTK GNSS Receiver (Bad Elf Flex Mini) &mdash; BUY</h3>
+<p>Every capture stream in this program depends on accurate positioning tied to the department's California State Plane (WKID 7132) coordinate standard.
+Uncorrected phone GPS is accurate to only a few meters; an RTK receiver brings that down to centimeter level.</p>
+<h3>2. Data Governance &amp; Schema Standards &mdash; FORMALIZE (no cost)</h3>
+<p>An undocumented or inconsistent ID/attribute scheme becomes far more expensive to fix retroactively than to define up front.</p>
+<h3>3. EagleView (existing city account) &mdash; USE AS PRIMARY OUTDOOR IMAGERY SOURCE</h3>
+<p>The department already has access to this account at the city level, at no incremental cost, with true oblique imagery and AI-driven measurement tools.</p>
+<h3>4. Spexi &mdash; KEEP, BUT DEMOTE TO SUPPLEMENTAL/ON-DEMAND ONLY</h3>
+<p>Spexi's on-demand model fills the gap of needing fresh imagery outside EagleView's scheduled capture cycle.</p>
+<h3>5. In-House Mapping Drone &mdash; DO NOT BUY</h3>
+<p>Rejected due to Part 107 compliance overhead, FCC import restrictions pushing cost to $7K&ndash;15K, and redundancy with EagleView/Spexi.</p>
+<h3>6. Rugged Phone Cases &amp; Battery Packs &mdash; BUY</h3>
+<p>Staff phones are now primary field survey instruments; cheap insurance against field damage and downtime.</p>
+<h3>7. GPR / Utility Locating &mdash; CONTRACT PER-PROJECT</h3>
+<p>Specialized, infrequent (Phase 3 only) &mdash; contracting avoids owning equipment and training staff for occasional use.</p>
+<div class="note">
+<strong>Guiding principle applied throughout:</strong> buy only what is used constantly and is cheap to maintain; use what the city already provides before
+paying for anything new; keep low-cost/no-commitment services for gap-filling needs; contract out anything specialized or infrequent.
+</div>
+  <a class="back-link" onclick="history.back()">&larr; Back</a>
+  <footer>Rec &amp; Park GIS Indoors Program &mdash; internal reference document</footer>
+</div>
+</body>
+</html>

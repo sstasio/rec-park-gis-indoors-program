@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indoor Capture Method Comparison Matrix</title>
+<style>
+:root {
+  --green: #1b3a2f; --green2: #2f6f4f; --light: #eef2ef; --grey: #555555;
+  --amber-bg: #fbeee0; --amber: #8a5a00;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  margin: 0; background: #f5f7f6; color: #222; line-height: 1.55;
+}
+.wrap { max-width: 1000px; margin: 0 auto; padding: 32px 24px 80px; }
+header.page-header {
+  background: var(--green); color: white; padding: 28px 24px;
+  border-radius: 10px; margin-bottom: 28px;
+}
+header.page-header h1 { margin: 0 0 6px; font-size: 1.55rem; }
+header.page-header p { margin: 0; opacity: 0.85; font-size: 0.92rem; }
+nav.crumbs { font-size: 0.85rem; margin-bottom: 18px; }
+nav.crumbs a { color: var(--green2); text-decoration: none; font-weight: 600; }
+nav.crumbs a:hover { text-decoration: underline; }
+h2 { color: var(--green); font-size: 1.15rem; border-bottom: 2px solid var(--light); padding-bottom: 6px; margin-top: 38px; }
+h3 { color: var(--green2); font-size: 1.0rem; margin-top: 22px; }
+.lede { color: var(--grey); font-size: 0.95rem; }
+p { font-size: 0.93rem; }
+table { width: 100%; border-collapse: collapse; margin: 16px 0 8px; font-size: 0.86rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+thead th { background: var(--green); color: white; text-align: left; padding: 10px 12px; font-weight: 600; }
+tbody td { padding: 10px 12px; border-bottom: 1px solid #e2e6e4; vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--light); }
+tbody tr.highlight { background: var(--amber-bg); }
+tbody tr.good { background: #dcebe2; }
+.badge { display: inline-block; background: var(--green2); color: white; border-radius: 999px; padding: 2px 10px; font-size: 0.72rem; font-weight: 600; margin-right: 6px; }
+.badge-amber { background: var(--amber); }
+.note { background: var(--amber-bg); border-left: 4px solid var(--amber); padding: 14px 18px; border-radius: 6px; font-size: 0.88rem; color: #4a3200; margin-top: 20px; }
+.back-link { display:inline-block; margin-top: 30px; font-size: 0.85rem; color: var(--green2); text-decoration:none; font-weight:600; cursor:pointer; }
+.back-link:hover { text-decoration: underline; }
+footer { margin-top: 50px; font-size: 0.8rem; color: #888; text-align: center; }
+@media (max-width: 700px) {
+  table, thead, tbody, th, td, tr { display: block; }
+  thead tr { position: absolute; top: -9999px; left: -9999px; }
+  tbody tr { margin-bottom: 12px; border: 1px solid #e2e6e4; border-radius: 8px; overflow: hidden; }
+  tbody td { border-bottom: 1px solid #eee; }
+  tbody td:before { content: attr(data-label); font-weight: 700; color: var(--green); display: block; font-size: 0.72rem; text-transform: uppercase; margin-bottom: 2px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page-header">
+    <h1>Indoor Capture Method Comparison Matrix</h1>
+    <p>Reality capture options for ArcGIS Indoors floor plan generation &mdash; SF Rec &amp; Park Infrastructure Assessment</p>
+  </header>
+<p class="lede">Reality capture options for ArcGIS Indoors floor plan generation. Columns 1&ndash;4 are tools the department already owns at zero incremental cost;
+columns 5&ndash;6 are combined LiDAR+360&deg; camera systems currently <strong>under evaluation</strong> as a possible future purchase &mdash; not yet owned.</p>
+<table>
+<thead><tr><th>Criteria</th><th>iPhone LiDAR +<br>PIX4Dcatch/Matic</th><th>Polycam</th><th>Rented BLK2GO /<br>NavVis VLX</th><th>Purchased BLK360 /<br>Trimble X9</th><th>Realsee Galois<br>(M2 / P4)</th><th>Matterport Pro3</th></tr></thead>
+<tbody>
+<tr><td data-label="Criteria">Ownership status</td><td data-label="iPhone"><span class="badge">Already owned</span></td><td data-label="Polycam"><span class="badge">Already owned</span></td><td data-label="Rented"><span class="badge badge-amber">Rent as-needed</span></td><td data-label="Purchased"><span class="badge badge-amber">Not recommended</span></td><td data-label="Realsee"><span class="badge" style="background:#8a5a00;">Under evaluation</span></td><td data-label="Matterport"><span class="badge" style="background:#8a5a00;">Under evaluation</span></td></tr>
+<tr><td data-label="Criteria">Hardware cost</td><td data-label="iPhone">$0 (staff already have iPhones)</td><td data-label="Polycam">$0 (app, free/low-cost tier)</td><td data-label="Rented">~$500&ndash;$1,500/day rental</td><td data-label="Purchased">$16K&ndash;$40K+ upfront</td><td data-label="Realsee">$5,499 (M2) / $7,499 (P4)</td><td data-label="Matterport">~$6,800 (Pro3 camera, approx. &mdash; confirm current price)</td></tr>
+<tr><td data-label="Criteria">Ongoing software cost</td><td data-label="iPhone">Already licensed</td><td data-label="Polycam">Already licensed</td><td data-label="Rented">Cloud processing often bundled</td><td data-label="Purchased">Annual vendor subscription</td><td data-label="Realsee"><strong>Pay-as-you-go</strong> &mdash; no mandatory recurring subscription</td><td data-label="Matterport"><strong>Mandatory Matterport Cloud subscription</strong> per active space; E57 export requires Professional plan + additional per-space fee</td></tr>
+<tr><td data-label="Criteria">Point cloud accuracy (typical)</td><td data-label="iPhone">~1.7&ndash;2.3 cm vs. total-station control</td><td data-label="Polycam">Comparable to iPhone LiDAR / lower (photogrammetry-only)</td><td data-label="Rented">&plusmn;5&ndash;20 mm</td><td data-label="Purchased">&plusmn;2&ndash;6 mm</td><td data-label="Realsee">&plusmn;20 mm (M2); denser point cloud on P4 (~125,600 pts/sec)</td><td data-label="Matterport">~&plusmn;20 mm at 10m &mdash; not survey-grade</td></tr>
+<tr><td data-label="Criteria">Output format</td><td data-label="iPhone">.las/.laz direct (no conversion)</td><td data-label="Polycam">.e57/.las/mesh</td><td data-label="Rented">Proprietary cloud export &rarr; .las/.e57</td><td data-label="Purchased">.e57/.las</td><td data-label="Realsee">.e57, point cloud, CAD, 3D model &mdash; native, no extra unlock fee</td><td data-label="Matterport">.e57 available, but gated behind Professional plan + one-time per-space purchase</td></tr>
+<tr><td data-label="Criteria">Panoramic imagery included</td><td data-label="iPhone">No (separate 360 workflow needed, e.g. Insta360/GoPro)</td><td data-label="Polycam">Yes (visual mesh, not true pano)</td><td data-label="Rented">Some models yes (BLK2GO)</td><td data-label="Purchased">Varies by model</td><td data-label="Realsee">Yes &mdash; up to 24K/300MP (P4), single-pass with LiDAR</td><td data-label="Matterport">Yes &mdash; polished, widely recognized public-facing virtual tour format</td></tr>
+<tr><td data-label="Criteria">Capture speed</td><td data-label="iPhone">Moderate &mdash; walk-and-scan, some drift care needed</td><td data-label="Polycam">Fast &mdash; single room/quick object capture</td><td data-label="Rented">Very fast &mdash; full building in minutes</td><td data-label="Purchased">Slower (static) or fast (mobile X9)</td><td data-label="Realsee">~16 sec/station; ~1,000 sq ft in 15 min</td><td data-label="Matterport">Comparable, slightly slower per station</td></tr>
+<tr><td data-label="Criteria">Best fit</td><td data-label="iPhone">Routine, building-wide floor plan capture (current default)</td><td data-label="Polycam">Quick single-room/visual documentation</td><td data-label="Rented">Large/complex facilities, tight deadlines</td><td data-label="Purchased">High-frequency, survey-grade programs at scale</td><td data-label="Realsee">Complex/large facilities needing single-pass LiDAR + high-res pano, without recurring fees</td><td data-label="Matterport">Public-facing polished virtual tours for promotional/stakeholder use &mdash; less ideal as the primary GIS geometry source given subscription lock-in</td></tr>
+</tbody>
+</table>
+<div class="note">
+<strong>Quick read:</strong> The cheapest and most durable path for the core GIS Indoors pipeline remains what's already owned &mdash; <strong>iPhone LiDAR + PIX4Dcatch/PIX4Dmatic</strong> as
+default, <strong>Polycam</strong> for quick jobs. <strong>Realsee and Matterport are both still under evaluation</strong>, not yet purchased.
+</div>
+<h2 id="ecosystem-note">Realsee &amp; Matterport Ecosystem Evaluation &mdash; Advice</h2>
+<h3>Cost structure &mdash; the biggest differentiator</h3>
+<p><strong>Realsee (Galois M2/P4)</strong> uses a one-time hardware purchase ($5,499&ndash;$7,499) with <strong>pay-as-you-go</strong> hosting/publishing credits &mdash;
+no mandatory recurring subscription. <strong>Matterport (Pro3)</strong> requires an ongoing <strong>Matterport Cloud subscription per active space</strong>, and the E57
+point cloud export needed for the ArcGIS Indoors pipeline is gated behind a <strong>Professional-tier plan plus an additional one-time purchase per space</strong>.</p>
+<h3>Recommendation</h3>
+<p><strong>Realsee is the better fit for the core GIS Indoors pipeline</strong> given the no-mandatory-subscription model. <strong>Matterport is worth a second
+look specifically if a polished public-facing virtual tour product</strong> is a real goal for the Hub site or public engagement.</p>
+  <a class="back-link" onclick="history.back()">&larr; Back</a>
+  <footer>Rec &amp; Park GIS Indoors Program &mdash; internal reference document</footer>
+</div>
+</body>
+</html>
