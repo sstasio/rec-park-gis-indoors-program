@@ -1,5 +1,92 @@
 {
-  "_comment_README": "ArcGIS Dashboards configuration template.",
+  "_comment_README": "ArcGIS Dashboards configuration template — Rec & Park GIS Indoors Building Capture Rollout Tracker. Replace every <<PLACEHOLDER>> below with your actual portal/item values once the Survey123 form and Facilities layer are published.",
   "version": "2.2",
-  "note": "See original galaxy-prod hosted page for the full annotated template (this is a placeholder pending full sync)."
+  "showRefreshDisableIndicator": true,
+  "isMobileDefaultViewEnabled": false,
+  "layout": {
+    "rootElement": {
+      "type": "stackLayoutElement",
+      "orientation": "col",
+      "elements": [
+        { "type": "individualLayoutElement", "widgetId": "header-widget", "height": 60, "sizeUnit": "px" },
+        { "type": "stackLayoutElement", "orientation": "row", "height": 25, "sizeUnit": "%", "elements": [
+          { "type": "individualLayoutElement", "widgetId": "ind-total-buildings" },
+          { "type": "individualLayoutElement", "widgetId": "ind-captured" },
+          { "type": "individualLayoutElement", "widgetId": "gauge-pct-complete" },
+          { "type": "individualLayoutElement", "widgetId": "ind-needs-review" }
+        ] },
+        { "type": "stackLayoutElement", "orientation": "row", "height": 35, "sizeUnit": "%", "elements": [
+          { "type": "individualLayoutElement", "widgetId": "pie-qa-status" },
+          { "type": "individualLayoutElement", "widgetId": "serial-progress-time" },
+          { "type": "individualLayoutElement", "widgetId": "pie-capture-method" }
+        ] },
+        { "type": "stackLayoutElement", "orientation": "row", "elements": [
+          { "type": "individualLayoutElement", "widgetId": "map-buildings-status" },
+          { "type": "individualLayoutElement", "widgetId": "list-needs-attention" }
+        ] }
+      ]
+    }
+  },
+  "headerPanel": {
+    "type": "headerPanel", "id": "header-widget", "size": "small", "showMargin": true,
+    "logo": { "type": "logoBlank" },
+    "title": "Rec & Park GIS Indoors — Building Capture Rollout Dashboard",
+    "menuItems": [], "titleColors": { "text": "#ffffff" }, "backgroundColor": "#1b3a2f"
+  },
+  "widgets": [
+    { "id": "ind-total-buildings", "name": "Total Buildings", "type": "indicatorWidget", "caption": "Total Buildings",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<FACILITIES_LAYER_ITEM_ID>>", "layerId": 0, "table": false },
+      "outFields": ["*"], "statisticDefinitions": [{ "onStatisticField": "FACILITY_ID", "outStatisticFieldName": "value", "statisticType": "count" }], "maxFeatures": 50, "name": "main" }],
+      "topSection": { "type": "staticIndicatorContent", "text": "Total Buildings" },
+      "middleSection": { "type": "statisticIndicatorContent", "field": "value", "statistic": "count" } },
+    { "id": "ind-captured", "name": "Captured", "type": "indicatorWidget", "caption": "Buildings Captured",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<SURVEY123_RESULTS_ITEM_ID>>", "layerId": 0, "table": false },
+      "outFields": ["*"], "filter": { "where": "capture_date IS NOT NULL" }, "statisticDefinitions": [{ "onStatisticField": "facility_id", "outStatisticFieldName": "value", "statisticType": "count" }], "name": "main" }],
+      "topSection": { "type": "staticIndicatorContent", "text": "Buildings Captured" },
+      "middleSection": { "type": "statisticIndicatorContent", "field": "value", "statistic": "count" } },
+    { "id": "gauge-pct-complete", "name": "% Complete", "type": "gaugeWidget", "caption": "% Complete", "style": "progress",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<SURVEY123_RESULTS_ITEM_ID>>", "layerId": 0, "table": false },
+      "outFields": ["*"], "statisticDefinitions": [{ "onStatisticField": "facility_id", "outStatisticFieldName": "value", "statisticType": "count" }], "name": "main" }],
+      "_comment": "Set 'value' expression to (Captured / Total Buildings) * 100 using Arcade in the Dashboard builder's Data panel.",
+      "minValue": 0, "maxValue": 100 },
+    { "id": "ind-needs-review", "name": "Needs Review", "type": "indicatorWidget", "caption": "Needs Review", "backgroundColor": "#fbeee0",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<SURVEY123_RESULTS_ITEM_ID>>", "layerId": 1, "table": true },
+      "outFields": ["*"], "filter": { "where": "floor_qa_status = 'needs_review'" }, "statisticDefinitions": [{ "onStatisticField": "floor_number", "outStatisticFieldName": "value", "statisticType": "count" }], "name": "main" }],
+      "topSection": { "type": "staticIndicatorContent", "text": "Floors Needing Review" },
+      "middleSection": { "type": "statisticIndicatorContent", "field": "value", "statistic": "count" } },
+    { "id": "pie-qa-status", "name": "QA Status Breakdown", "type": "pieChartWidget", "caption": "QA Status Breakdown",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<SURVEY123_RESULTS_ITEM_ID>>", "layerId": 1, "table": true },
+      "outFields": ["*"], "groupByFields": ["floor_qa_status"], "orderByFields": ["value DESC"], "statisticDefinitions": [{ "onStatisticField": "floor_number", "outStatisticFieldName": "value", "statisticType": "count" }], "name": "main" }],
+      "category": { "fieldName": "floor_qa_status" }, "series": [{ "seriesType": "pie", "field": "value" }] },
+    { "id": "serial-progress-time", "name": "Capture Progress Over Time", "type": "serialChartWidget", "caption": "Capture Progress Over Time (Weekly)",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<SURVEY123_RESULTS_ITEM_ID>>", "layerId": 0, "table": false },
+      "outFields": ["*"], "groupByFields": ["capture_date"], "orderByFields": ["capture_date ASC"], "statisticDefinitions": [{ "onStatisticField": "facility_id", "outStatisticFieldName": "value", "statisticType": "count" }], "name": "main" }],
+      "categoryType": "time", "valueAxis": { "title": "Cumulative Buildings Captured" }, "categoryAxis": { "title": "Week" }, "series": [{ "seriesType": "column", "valueField": "value" }] },
+    { "id": "pie-capture-method", "name": "Capture Method Mix", "type": "pieChartWidget", "caption": "Capture Method Mix",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<SURVEY123_RESULTS_ITEM_ID>>", "layerId": 1, "table": true },
+      "outFields": ["*"], "groupByFields": ["oriented_imagery_device"], "statisticDefinitions": [{ "onStatisticField": "floor_number", "outStatisticFieldName": "value", "statisticType": "count" }], "name": "main" }],
+      "category": { "fieldName": "oriented_imagery_device" }, "series": [{ "seriesType": "pie", "field": "value" }] },
+    { "id": "map-buildings-status", "name": "Map — Buildings by Capture Status", "type": "mapWidget", "caption": "Buildings by Capture Status",
+      "itemId": "<<WEBMAP_ITEM_ID>>", "mapTools": [{ "type": "legendTool" }, { "type": "zoomTool" }],
+      "layers": [{ "id": "facilities-layer", "type": "featureLayerDataSource", "layerId": 0, "name": "Facilities symbolized by qa_status" }],
+      "flashRepeats": 3, "selectionMode": "single" },
+    { "id": "list-needs-attention", "name": "List — Buildings Needing Attention", "type": "listWidget", "caption": "Buildings Needing Attention",
+      "datasets": [{ "type": "serviceDataset", "dataSource": { "type": "featureServiceDataSource", "itemId": "<<SURVEY123_RESULTS_ITEM_ID>>", "layerId": 1, "table": true },
+      "outFields": ["*"], "filter": { "where": "floor_qa_status IN ('needs_review','not_started')" }, "orderByFields": ["capture_date DESC"], "name": "main" }],
+      "iconType": "symbol",
+      "items": [ { "type": "textItem", "text": "{facility_id} — Floor {floor_number}" }, { "type": "textItem", "text": "Status: {floor_qa_status}" }, { "type": "textItem", "text": "Crew: {crew_members}" } ],
+      "selectionMode": "single", "noDataText": "No buildings currently need attention" }
+  ],
+  "_usage_notes": {
+    "placeholders_to_replace": [
+      "<<FACILITIES_LAYER_ITEM_ID>> — item ID of your Indoors Facilities feature layer",
+      "<<SURVEY123_RESULTS_ITEM_ID>> — item ID of the hosted feature layer from Survey123 Connect (layer 0 = building parent, layer 1 = floors repeat table — confirm indexes after publishing)",
+      "<<WEBMAP_ITEM_ID>> — item ID of a web map containing your Facilities layer"
+    ],
+    "how_to_apply": [
+      "Option A (no-code): use this as a build reference, recreate widgets in the ArcGIS Dashboards builder UI.",
+      "Option B (programmatic): create a blank Dashboard item, then use arcgis.gis.Item.update(data=<this JSON as dict>) via ArcGIS API for Python.",
+      "After publishing Survey123, confirm actual layerId values match what's used above."
+    ]
+  }
 }
