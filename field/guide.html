@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Field Guide | GIS Indoors</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">RP</div>
+    <div><h1>Complete Field Guide</h1><p class="sub">Capture methodology — exteriors, hardscape, interiors, 360°</p></div>
+  </div>
+</header>
+<div class="wrap">
+<p class="lede">This is the full method behind each checklist item. Read once before your first capture day; use the Checklists page in the field afterward.</p>
+<div class="note blue">
+<strong>Tool-to-task map:</strong> PIX4Dcatch → building exteriors + park hardscape/infrastructure. Polycam → building interiors. Insta360 R2 → 360° photo/video for all spaces. All positioning ties back to a Bad Elf RTK receiver on WKID 7132.
+</div>
+<h2>0. Before You Leave the Office</h2>
+<ul>
+<li>Phone, Bad Elf Flex/Flex Mini, Insta360 R2 — charged, plus spare battery packs</li>
+<li>NTRIP login confirmed working (Caltrans CRTN or Point One)</li>
+<li>Phone storage cleared — PIX4Dcatch and Polycam scans are large</li>
+<li>Facility ID + floor list for today's building(s) confirmed</li>
+<li>PIX4Dcatch project created and synced to PIX4Dcloud beforehand if possible</li>
+</ul>
+<h2>1. Exterior Capture — PIX4Dcatch</h2>
+<p>Used for: building exteriors, park hardscape (courts, paths, plazas), and site infrastructure (fences, signage structures, retaining walls).</p>
+<ul>
+<li>Pair Bad Elf to PIX4Dcatch via Bluetooth; confirm <strong>RTK Fix</strong> (not Float) before starting</li>
+<li>Set 3–5 control points around the perimeter, tied to WKID 7132</li>
+<li>Walk the full perimeter at a steady pace, fixed phone angle</li>
+<li>Vary distance/height per façade — avoid robotic straight lines, PIX4Dmatic needs angle variation for reconstruction</li>
+<li>Capture roofline/eaves from ground level, angled up, if roof access isn't safe</li>
+<li>Close the loop back to your start point for drift correction</li>
+<li>For hardscape (courts, paths, plazas): walk a grid or perimeter pattern at consistent height, same overlap rules apply</li>
+</ul>
+<h2>2. Roof Capture (Decision Point)</h2>
+<ul>
+<li>Safe, code-compliant access + fall protection available? → capture it like an interior floor with PIX4Dcatch</li>
+<li>No safe access? → <strong>do not go up.</strong> Use EagleView oblique imagery instead and note the substitution</li>
+</ul>
+<h2>3. Interior Capture — Polycam</h2>
+<p>Used for: all building interior floor plan and room-level capture.</p>
+<ul>
+<li>One Polycam LiDAR Room-mode session per floor</li>
+<li>Walk continuously — don't stop and shoot; Polycam's LiDAR mode is a continuous scan, keep a steady pace</li>
+<li>Cover every room, alcove, closet, and restroom — ArcGIS Indoors needs geometry for every unit, not just main rooms</li>
+<li>Pause briefly at stairwells/elevators to tie floors together</li>
+<li>Use a loop or figure-eight pattern through irregular layouts to close scan loops and reduce drift</li>
+<li>Export floor plan as DXF from Polycam Pro when finished — this feeds the ArcGIS Indoors Units/Details import</li>
+</ul>
+<h2>4. 360° Imagery — Insta360 R2</h2>
+<p>Used for: the photo tour layer, embedded in facility popups/pages, for every space (interior and exterior).</p>
+<ul>
+<li>Station every ~10–15 ft, or at the center of each room</li>
+<li>Keep camera height and level consistent between stations</li>
+<li>Turn on all lights in dark rooms; avoid direct sun glare outdoors</li>
+<li>Note the position/room for every pano — this is what lets you link panos to floor plan markers later</li>
+</ul>
+<h2>5. Asset Tags / Barcodes</h2>
+<ul>
+<li>Standard iPhone camera, tap-to-focus, fill the frame</li>
+<li>Use flash/flashlight in low light</li>
+<li>Shoot barcodes square-on and flat, not at an angle</li>
+<li>Attach each photo + tag ID directly in the Survey123 Asset Tag Photos section</li>
+</ul>
+<h2>6. Before Leaving the Building</h2>
+<ul>
+<li>QA spot-check: tape-measure one known distance and compare to the live model on-screen</li>
+<li>Confirm file naming: Facility ID + floor number on every PIX4Dcatch and Polycam session</li>
+<li>Submit/sync the Survey123 record</li>
+<li>Upload PIX4Dcatch project to PIX4Dcloud for processing; export Polycam scan (DXF + E57)</li>
+</ul>
+<h2>7. Processing (Back at the Office)</h2>
+<table>
+<thead><tr><th>Source</th><th>Tool</th><th>Output</th><th>Destination</th></tr></thead>
+<tbody>
+<tr><td data-label="Source">Exterior / hardscape</td><td data-label="Tool">PIX4Dcloud → PIX4Dmatic</td><td data-label="Output">Point cloud, mesh, orthomosaic</td><td data-label="Destination">ArcGIS Pro → AGOL Scene Layer</td></tr>
+<tr><td data-label="Source">Interior floor plan</td><td data-label="Tool">Polycam export</td><td data-label="Output">DXF + E57</td><td data-label="Destination">ArcGIS Pro → Indoors geodatabase (Units/Details)</td></tr>
+<tr><td data-label="Source">360° tour</td><td data-label="Tool">Insta360 Studio</td><td data-label="Output">Stitched equirectangular images</td><td data-label="Destination">Photo/video storage → linked from facility page</td></tr>
+<tr><td data-label="Source">Documents (MOUs, plans)</td><td data-label="Tool">— (existing files)</td><td data-label="Output">PDF/DOCX</td><td data-label="Destination">SharePoint document library</td></tr>
+</tbody>
+</table>
+<div class="note">
+<strong>Reminder:</strong> every capture depends on getting an RTK Fix before you start. If Bad Elf shows Float, wait for it to resolve or reposition for better sky view before continuing — uncorrected positions will misalign with your WKID 7132 enterprise data.
+</div>
+<footer class="page-footer">Rec & Park GIS Indoors Program — field reference</footer>
+</div>
+<nav class="bottom">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="guide.html" class="active"><span class="ic">📋</span>Guide</a>
+  <a href="checklists.html"><span class="ic">✅</span>Checklist</a>
+  <a href="diagrams.html"><span class="ic">🗺️</span>Diagrams</a>
+  <a href="tech-stack.html"><span class="ic">🛠️</span>Tech</a>
+  <a href="storage.html"><span class="ic">☁️</span>Storage</a>
+</nav>
+</body>
+</html>

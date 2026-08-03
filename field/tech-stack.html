@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Stack | GIS Indoors</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">RP</div>
+    <div><h1>Tech Stack Reference</h1><p class="sub">What each tool does and how it connects</p></div>
+  </div>
+</header>
+<div class="wrap">
+<div class="tech-tile"><div class="ic">📱</div><div><h3>PIX4Dcatch</h3><p>Mobile capture app (LiDAR + photogrammetry). Used for building exteriors, park hardscape, and site infrastructure. Syncs to PIX4Dcloud.</p></div></div>
+<div class="tech-tile"><div class="ic">☁️</div><div><h3>PIX4Dcloud</h3><p>Cloud processing/storage for PIX4Dcatch projects. Bridges field capture to PIX4Dmatic processing without needing a desktop upload step in the field.</p></div></div>
+<div class="tech-tile"><div class="ic">🖥️</div><div><h3>PIX4Dmatic</h3><p>Desktop processing engine. Turns PIX4Dcatch imagery into dense point clouds, textured meshes, and orthomosaics, georeferenced to WKID 7132.</p></div></div>
+<div class="tech-tile"><div class="ic">🏠</div><div><h3>Polycam</h3><p>iPhone LiDAR scanning app. Used exclusively for building interior capture — produces point clouds and exportable DXF floor plans that feed ArcGIS Indoors.</p></div></div>
+<div class="tech-tile"><div class="ic">🎥</div><div><h3>Insta360 R2</h3><p>360° camera for photo/video tours. Used across all spaces (interior + exterior) to build the walkthrough layer linked from facility pages.</p></div></div>
+<div class="tech-tile"><div class="ic">📄</div><div><h3>SharePoint</h3><p>Document library for MOUs, plans, reports, and other file-based records. Not used for large media (photos/video/point clouds) — see the Storage page.</p></div></div>
+<div class="tech-tile"><div class="ic">🗺️</div><div><h3>ArcGIS Online (AGOL)</h3><p>GIS system of record — Facilities, Units, Levels, Pathways, Scene Layers. Holds geometry and attributes, not raw media files.</p></div></div>
+<div class="tech-tile"><div class="ic">🧩</div><div><h3>Experience Builder / Hub</h3><p>Public and internal web display layer. Popups link out to dedicated facility pages showing attributes, embedded 360° tours, photo galleries, and documents.</p></div></div>
+<div class="tech-tile"><div class="ic">📡</div><div><h3>Bad Elf RTK GNSS</h3><p>Positioning backbone for every capture stream — ties PIX4Dcatch control points to WKID 7132 at centimeter accuracy via NTRIP correction.</p></div></div>
+<div class="note blue">
+<strong>Rule of thumb:</strong> AGOL stores <em>where things are</em> (geometry + attributes). SharePoint stores <em>documents</em>. The photo/video store (see Storage page) holds <em>large media</em>. Experience Builder/Hub stitches all three together for the end user.
+</div>
+<footer class="page-footer">Rec & Park GIS Indoors Program — field reference</footer>
+</div>
+<nav class="bottom">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="guide.html"><span class="ic">📋</span>Guide</a>
+  <a href="checklists.html"><span class="ic">✅</span>Checklist</a>
+  <a href="diagrams.html"><span class="ic">🗺️</span>Diagrams</a>
+  <a href="tech-stack.html" class="active"><span class="ic">🛠️</span>Tech</a>
+  <a href="storage.html"><span class="ic">☁️</span>Storage</a>
+</nav>
+</body>
+</html>
