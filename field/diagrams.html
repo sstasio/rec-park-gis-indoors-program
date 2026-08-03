@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagrams | GIS Indoors</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">RP</div>
+    <div><h1>Workflow Diagrams</h1><p class="sub">Capture → processing → storage → publish</p></div>
+  </div>
+</header>
+<div class="wrap">
+<h2>End-to-End Data Flow</h2>
+<div class="diagram-card">
+<svg viewBox="0 0 340 640" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="10" y="10" width="140" height="46" rx="8" fill="#1b3a2f"/>
+  <text x="80" y="30" fill="white" font-size="11" text-anchor="middle" font-weight="700">PIX4Dcatch</text>
+  <text x="80" y="45" fill="#cfe3d9" font-size="9" text-anchor="middle">Exterior + Hardscape</text>
+  <rect x="190" y="10" width="140" height="46" rx="8" fill="#1b3a2f"/>
+  <text x="260" y="30" fill="white" font-size="11" text-anchor="middle" font-weight="700">Polycam</text>
+  <text x="260" y="45" fill="#cfe3d9" font-size="9" text-anchor="middle">Building Interiors</text>
+  <rect x="100" y="76" width="140" height="46" rx="8" fill="#1b3a2f"/>
+  <text x="170" y="96" fill="white" font-size="11" text-anchor="middle" font-weight="700">Insta360 R2</text>
+  <text x="170" y="111" fill="#cfe3d9" font-size="9" text-anchor="middle">360° Photo/Video (all spaces)</text>
+  <line x1="80" y1="56" x2="170" y2="150" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="260" y1="56" x2="170" y2="150" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="170" y1="122" x2="170" y2="150" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="10" y="160" width="140" height="46" rx="8" fill="#2f6f4f"/>
+  <text x="80" y="180" fill="white" font-size="11" text-anchor="middle" font-weight="700">PIX4Dcloud</text>
+  <text x="80" y="195" fill="#e4f0ea" font-size="9" text-anchor="middle">→ PIX4Dmatic</text>
+  <rect x="190" y="160" width="140" height="46" rx="8" fill="#2f6f4f"/>
+  <text x="260" y="180" fill="white" font-size="11" text-anchor="middle" font-weight="700">Polycam Export</text>
+  <text x="260" y="195" fill="#e4f0ea" font-size="9" text-anchor="middle">DXF + E57</text>
+  <rect x="100" y="226" width="140" height="46" rx="8" fill="#2f6f4f"/>
+  <text x="170" y="246" fill="white" font-size="11" text-anchor="middle" font-weight="700">Insta360 Studio</text>
+  <text x="170" y="261" fill="#e4f0ea" font-size="9" text-anchor="middle">Stitch equirectangular</text>
+  <line x1="80" y1="206" x2="170" y2="300" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="260" y1="206" x2="170" y2="300" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="170" y1="272" x2="170" y2="300" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="90" y="300" width="160" height="50" rx="8" fill="#1b4a7a"/>
+  <text x="170" y="321" fill="white" font-size="12" text-anchor="middle" font-weight="700">ArcGIS Pro</text>
+  <text x="170" y="336" fill="#dce8f5" font-size="9" text-anchor="middle">Indoors GDB · Scene Layers</text>
+  <line x1="170" y1="350" x2="170" y2="380" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="10" y="384" width="140" height="46" rx="8" fill="#8a5a00"/>
+  <text x="80" y="404" fill="white" font-size="11" text-anchor="middle" font-weight="700">ArcGIS Online</text>
+  <text x="80" y="419" fill="#f6e6cf" font-size="9" text-anchor="middle">GIS data / geometry</text>
+  <rect x="190" y="384" width="140" height="46" rx="8" fill="#8a5a00"/>
+  <text x="260" y="404" fill="white" font-size="11" text-anchor="middle" font-weight="700">Photo/Video Store</text>
+  <text x="260" y="419" fill="#f6e6cf" font-size="9" text-anchor="middle">See Storage page</text>
+  <rect x="100" y="440" width="140" height="46" rx="8" fill="#8a5a00"/>
+  <text x="170" y="460" fill="white" font-size="11" text-anchor="middle" font-weight="700">SharePoint</text>
+  <text x="170" y="475" fill="#f6e6cf" font-size="9" text-anchor="middle">MOUs, plans, documents</text>
+  <line x1="80" y1="430" x2="170" y2="510" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="260" y1="430" x2="170" y2="510" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="170" y1="486" x2="170" y2="510" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="70" y="510" width="200" height="50" rx="8" fill="#1b3a2f"/>
+  <text x="170" y="531" fill="white" font-size="12" text-anchor="middle" font-weight="700">Experience Builder / Hub</text>
+  <text x="170" y="546" fill="#cfe3d9" font-size="9" text-anchor="middle">Public + internal web display</text>
+  <line x1="170" y1="560" x2="170" y2="590" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="90" y="590" width="160" height="42" rx="8" fill="#2f6f4f"/>
+  <text x="170" y="616" fill="white" font-size="11" text-anchor="middle" font-weight="700">Field crews + public</text>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#999"/></marker></defs>
+</svg>
+</div>
+<p class="diagram-caption">Every capture stream converges in ArcGIS Pro, then splits across three storage destinations before publishing to the public/internal web layer.</p>
+<h2>Which Tool Do I Use? (Decision Tree)</h2>
+<div class="diagram-card">
+<svg viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="90" y="6" width="160" height="42" rx="8" fill="#1b3a2f"/>
+  <text x="170" y="31" fill="white" font-size="11" text-anchor="middle" font-weight="700">What am I capturing?</text>
+  <line x1="140" y1="48" x2="70" y2="90" stroke="#999" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="200" y1="48" x2="270" y2="90" stroke="#999" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="10" y="92" width="120" height="40" rx="8" fill="#2f6f4f"/>
+  <text x="70" y="116" fill="white" font-size="10" text-anchor="middle">Building interior</text>
+  <rect x="210" y="92" width="120" height="40" rx="8" fill="#2f6f4f"/>
+  <text x="270" y="116" fill="white" font-size="10" text-anchor="middle">Exterior or hardscape</text>
+  <line x1="70" y1="132" x2="70" y2="170" stroke="#999" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="270" y1="132" x2="270" y2="170" stroke="#999" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="10" y="172" width="120" height="44" rx="8" fill="#1b4a7a"/>
+  <text x="70" y="192" fill="white" font-size="11" text-anchor="middle" font-weight="700">Polycam</text>
+  <text x="70" y="206" fill="#dce8f5" font-size="8" text-anchor="middle">LiDAR Room mode</text>
+  <rect x="210" y="172" width="120" height="44" rx="8" fill="#1b4a7a"/>
+  <text x="270" y="192" fill="white" font-size="11" text-anchor="middle" font-weight="700">PIX4Dcatch</text>
+  <text x="270" y="206" fill="#dce8f5" font-size="8" text-anchor="middle">→ PIX4Dmatic</text>
+  <line x1="170" y1="48" x2="170" y2="240" stroke="#999" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#arrow2)"/>
+  <rect x="100" y="242" width="140" height="46" rx="8" fill="#8a5a00"/>
+  <text x="170" y="262" fill="white" font-size="10" text-anchor="middle" font-weight="700">Also want a photo tour?</text>
+  <text x="170" y="277" fill="#f6e6cf" font-size="8" text-anchor="middle">→ Insta360 R2, always</text>
+  <defs><marker id="arrow2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#999"/></marker></defs>
+</svg>
+</div>
+<p class="diagram-caption">Interior → Polycam. Exterior/hardscape → PIX4Dcatch. 360° tour imagery with Insta360 R2 either way.</p>
+<h2>ArcGIS Indoors Data Model (Simplified)</h2>
+<div class="diagram-card">
+<svg viewBox="0 0 320 210" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="10" y="10" width="130" height="34" rx="6" fill="#1b3a2f"/>
+  <text x="75" y="31" fill="white" font-size="10" text-anchor="middle">Site (campus)</text>
+  <line x1="75" y1="44" x2="75" y2="70" stroke="#999" stroke-width="2" marker-end="url(#arrow3)"/>
+  <rect x="10" y="72" width="130" height="34" rx="6" fill="#2f6f4f"/>
+  <text x="75" y="93" fill="white" font-size="10" text-anchor="middle">Facility (building)</text>
+  <line x1="75" y1="106" x2="75" y2="132" stroke="#999" stroke-width="2" marker-end="url(#arrow3)"/>
+  <rect x="10" y="134" width="130" height="34" rx="6" fill="#3f8f66"/>
+  <text x="75" y="155" fill="white" font-size="10" text-anchor="middle">Level (floor)</text>
+  <line x1="140" y1="151" x2="180" y2="151" stroke="#999" stroke-width="2" marker-end="url(#arrow3)"/>
+  <rect x="182" y="134" width="130" height="34" rx="6" fill="#1b4a7a"/>
+  <text x="247" y="155" fill="white" font-size="10" text-anchor="middle">Units (rooms) ← Polycam</text>
+  <line x1="247" y1="168" x2="247" y2="190" stroke="#999" stroke-width="2" marker-end="url(#arrow3)"/>
+  <rect x="182" y="192" width="130" height="16" rx="4" fill="#8a5a00"/>
+  <text x="247" y="203" fill="white" font-size="8" text-anchor="middle">Details / Pathways</text>
+  <defs><marker id="arrow3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#999"/></marker></defs>
+</svg>
+</div>
+<p class="diagram-caption">Polycam-derived floor plans feed the Units layer, which is the level ArcGIS Indoors routing and popups actually operate on.</p>
+<footer class="page-footer">Rec & Park GIS Indoors Program — field reference</footer>
+</div>
+<nav class="bottom">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="guide.html"><span class="ic">📋</span>Guide</a>
+  <a href="checklists.html"><span class="ic">✅</span>Checklist</a>
+  <a href="diagrams.html" class="active"><span class="ic">🗺️</span>Diagrams</a>
+  <a href="tech-stack.html"><span class="ic">🛠️</span>Tech</a>
+  <a href="storage.html"><span class="ic">☁️</span>Storage</a>
+</nav>
+</body>
+</html>
