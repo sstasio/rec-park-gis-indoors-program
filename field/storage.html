@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storage Plan | GIS Indoors</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">RP</div>
+    <div><h1>Photo & Video Storage</h1><p class="sub">Where large media should live, and why</p></div>
+  </div>
+</header>
+<div class="wrap">
+<p class="lede">You've settled SharePoint (documents) and AGOL (GIS data) already. The open question is where <strong>photos, 360° video, and point cloud/mesh exports</strong> should live — these are too large and too numerous for SharePoint, and too expensive to store natively in AGOL at scale.</p>
+<h2>Why Not Just SharePoint or AGOL for Media?</h2>
+<div class="note"><strong>SharePoint:</strong> has per-file and library sync limits, and OneDrive/SharePoint sync clients slow down badly once a library holds thousands of large photo/video/point-cloud files. It's built for documents, not a media library.</div>
+<div class="note"><strong>AGOL:</strong> hosted content storage is billed by credits and adds up fast at building-portfolio scale (hundreds of 360° panos + point clouds + mesh exports per building). AGOL should hold <em>links</em> to media, not the media itself.</div>
+<h2>Recommended: Azure Blob Storage</h2>
+<div class="note good"><strong>Recommendation:</strong> Azure Blob Storage, under the City's existing Microsoft 365 / Azure tenant if SF already has one (likely, given SharePoint/M365 use). This keeps photo/video storage in the same governance and identity boundary as your documents, at a fraction of AGOL's per-GB cost, with no new vendor to get through security review.</div>
+<table>
+<thead><tr><th>Reason</th><th>Detail</th></tr></thead>
+<tbody>
+<tr><td data-label="Reason">Cost</td><td data-label="Detail">Blob storage is priced per GB/month, typically far cheaper than AGOL credits for the same volume of large files</td></tr>
+<tr><td data-label="Reason">Governance</td><td data-label="Detail">Same tenant as SharePoint/M365 — one identity/security boundary, no new vendor onboarding</td></tr>
+<tr><td data-label="Reason">Integration</td><td data-label="Detail">Blob URLs can be stored directly as attribute fields in your AGOL Facilities/Units layers and referenced from Experience Builder Embed widgets</td></tr>
+<tr><td data-label="Reason">Scalability</td><td data-label="Detail">Handles thousands of large files (360° panos, point clouds, mesh exports) without the sync/performance issues SharePoint has at that scale</td></tr>
+<tr><td data-label="Reason">Access control</td><td data-label="Detail">Supports both public read (for published tours) and restricted containers (for raw point cloud data) in the same account</td></tr>
+</tbody>
+</table>
+<h2>Alternatives Considered</h2>
+<table>
+<thead><tr><th>Option</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td data-label="Option">AWS S3</td><td data-label="Detail">Functionally similar to Azure Blob, but adds a second cloud vendor/identity boundary outside your existing M365 footprint — only worth it if the City already has an AWS relationship elsewhere.</td></tr>
+<tr><td data-label="Option">AGOL hosted content</td><td data-label="Detail">Fine for thumbnails/small previews, not cost-effective as the primary store for full-resolution media at portfolio scale.</td></tr>
+<tr><td data-label="Option">Dedicated DAM</td><td data-label="Detail">Overkill for this program's size; adds a new subscription and tool for staff to learn without a clear benefit over blob storage + a simple folder convention.</td></tr>
+<tr><td data-label="Option">3DVista / Insta360 native hosting</td><td data-label="Detail">Convenient for quick publishing, but keeps your media on a third-party platform outside city governance — fine for a pilot, not for the long-term system of record.</td></tr>
+</tbody>
+</table>
+<h2>Suggested Folder / Container Convention</h2>
+<div class="note blue"><pre style="white-space:pre-wrap;font-size:0.82rem;margin:0;">rpd-gis-media/
+  {FacilityID}/
+    exterior/         (PIX4Dmatic point cloud, mesh, orthomosaic)
+    interior/         (Polycam DXF, E57)
+    360-tour/         (Insta360 stitched panos/video)
+    asset-photos/     (barcode/tag closeups)
+</pre></div>
+<p>Store the resulting blob container URL (or per-asset URL) in a <code>MediaURL</code>-style field on your Facilities/Units layer, exactly the same pattern already used for <code>Tour360_URL</code> in the facility page template.</p>
+<footer class="page-footer">Rec & Park GIS Indoors Program — field reference</footer>
+</div>
+<nav class="bottom">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="guide.html"><span class="ic">📋</span>Guide</a>
+  <a href="checklists.html"><span class="ic">✅</span>Checklist</a>
+  <a href="diagrams.html"><span class="ic">🗺️</span>Diagrams</a>
+  <a href="tech-stack.html"><span class="ic">🛠️</span>Tech</a>
+  <a href="storage.html" class="active"><span class="ic">☁️</span>Storage</a>
+</nav>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklists | GIS Indoors</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">RP</div>
+    <div><h1>Field Checklists</h1><p class="sub">Tap to check off — saves automatically on this phone</p></div>
+  </div>
+</header>
+<div class="wrap">
+<div class="progress-bar"><div id="progressFill"></div></div>
+<p style="font-size:0.85rem;color:#555;margin-top:-10px;" id="progressText">0 of 0 complete</p>
+<div class="phase-header">Before You Leave the Office</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="office">
+<li><input type="checkbox" data-id="office-1"><span>Phone, Bad Elf, Insta360 R2 charged + spare batteries</span></li>
+<li><input type="checkbox" data-id="office-2"><span>NTRIP login confirmed working (Caltrans CRTN / Point One)</span></li>
+<li><input type="checkbox" data-id="office-3"><span>Phone storage cleared</span></li>
+<li><input type="checkbox" data-id="office-4"><span>Facility ID + floor list confirmed</span></li>
+<li><input type="checkbox" data-id="office-5"><span>PIX4Dcatch project created / synced</span></li>
+</ul>
+</div>
+<div class="phase-header">On Arrival</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="arrival">
+<li><input type="checkbox" data-id="arrival-1"><span>Bad Elf connected to NTRIP — confirm <strong>RTK Fix</strong> (not Float)</span></li>
+<li><input type="checkbox" data-id="arrival-2"><span>Bad Elf paired to PIX4Dcatch via Bluetooth, offset verified</span></li>
+<li><input type="checkbox" data-id="arrival-3"><span>3–5 exterior control points set</span></li>
+</ul>
+</div>
+<div class="phase-header">Exterior / Hardscape — PIX4Dcatch</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="exterior">
+<li><input type="checkbox" data-id="ext-1"><span>Walk full perimeter, fixed angle, steady pace</span></li>
+<li><input type="checkbox" data-id="ext-2"><span>Vary distance/height per façade</span></li>
+<li><input type="checkbox" data-id="ext-3"><span>Roofline/eaves shot from ground if no roof access</span></li>
+<li><input type="checkbox" data-id="ext-4"><span>Loop closed back to start point</span></li>
+<li><input type="checkbox" data-id="ext-5"><span>Hardscape (courts/paths/plazas) captured in grid or perimeter pattern</span></li>
+</ul>
+</div>
+<div class="phase-header">Roof (Decision Required)</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="roof">
+<li><input type="checkbox" data-id="roof-1"><span>Safe code-compliant access confirmed? If yes → capture with PIX4Dcatch</span></li>
+<li><input type="checkbox" data-id="roof-2"><span>If no safe access → used EagleView instead, noted in Survey123</span></li>
+</ul>
+</div>
+<div class="phase-header">Interior — Polycam (per floor)</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="interior">
+<li><input type="checkbox" data-id="int-1"><span>One Polycam LiDAR Room session started per floor</span></li>
+<li><input type="checkbox" data-id="int-2"><span>Continuous walk — every room, closet, restroom covered</span></li>
+<li><input type="checkbox" data-id="int-3"><span>Paused at stairwells/elevators for floor tie-in</span></li>
+<li><input type="checkbox" data-id="int-4"><span>Loop/figure-eight pattern used for irregular layouts</span></li>
+<li><input type="checkbox" data-id="int-5"><span>DXF floor plan exported from Polycam Pro</span></li>
+</ul>
+</div>
+<div class="phase-header">360° Imagery — Insta360 R2</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="pano">
+<li><input type="checkbox" data-id="pano-1"><span>Station every ~10–15 ft or room center</span></li>
+<li><input type="checkbox" data-id="pano-2"><span>Consistent camera height + level</span></li>
+<li><input type="checkbox" data-id="pano-3"><span>Lights on / glare checked</span></li>
+<li><input type="checkbox" data-id="pano-4"><span>Position/room noted per pano</span></li>
+</ul>
+</div>
+<div class="phase-header">Asset Tags / Barcodes</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="assets">
+<li><input type="checkbox" data-id="asset-1"><span>Standard camera, tap-to-focus, frame filled</span></li>
+<li><input type="checkbox" data-id="asset-2"><span>Flash/flashlight used in low light</span></li>
+<li><input type="checkbox" data-id="asset-3"><span>Barcodes shot square-on and flat</span></li>
+<li><input type="checkbox" data-id="asset-4"><span>Photo + tag ID attached in Survey123</span></li>
+</ul>
+</div>
+<div class="phase-header">Before Leaving the Building</div>
+<div class="phase-block">
+<ul class="checklist" data-phase="leaving">
+<li><input type="checkbox" data-id="leave-1"><span>QA spot-check: tape-measure distance vs. live model</span></li>
+<li><input type="checkbox" data-id="leave-2"><span>File naming confirmed: Facility ID + floor number</span></li>
+<li><input type="checkbox" data-id="leave-3"><span>Survey123 record submitted/synced</span></li>
+<li><input type="checkbox" data-id="leave-4"><span>PIX4Dcatch uploaded to PIX4Dcloud; Polycam exported (DXF + E57)</span></li>
+</ul>
+</div>
+<a href="#" class="reset-btn" id="resetBtn">Reset all checkboxes</a>
+<footer class="page-footer">Progress saves to this device only — not synced across phones</footer>
+</div>
+<nav class="bottom">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="guide.html"><span class="ic">📋</span>Guide</a>
+  <a href="checklists.html" class="active"><span class="ic">✅</span>Checklist</a>
+  <a href="diagrams.html"><span class="ic">🗺️</span>Diagrams</a>
+  <a href="tech-stack.html"><span class="ic">🛠️</span>Tech</a>
+  <a href="storage.html"><span class="ic">☁️</span>Storage</a>
+</nav>
+<script>
+(function () {
+  var STORAGE_KEY = "gis-field-checklist-v1";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('.checklist input[type="checkbox"]'));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch (e) { saved = {}; }
+  function updateProgress() {
+    var checked = boxes.filter(function (b) { return b.checked; }).length;
+    var pct = boxes.length ? Math.round((checked / boxes.length) * 100) : 0;
+    document.getElementById("progressFill").style.width = pct + "%";
+    document.getElementById("progressText").textContent = checked + " of " + boxes.length + " complete";
+  }
+  function applyState(box) {
+    var li = box.closest("li");
+    if (box.checked) { li.classList.add("checked-style"); } else { li.classList.remove("checked-style"); }
+  }
+  boxes.forEach(function (box) {
+    var id = box.getAttribute("data-id");
+    if (saved[id]) { box.checked = true; }
+    applyState(box);
+    box.addEventListener("change", function () {
+      saved[id] = box.checked;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+      applyState(box);
+      updateProgress();
+    });
+  });
+  document.getElementById("resetBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+    if (!confirm("Reset all checkboxes on this device?")) return;
+    saved = {};
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    boxes.forEach(function (box) { box.checked = false; applyState(box); });
+    updateProgress();
+  });
+  updateProgress();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deploy | GIS Indoors</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">RP</div>
+    <div><h1>Deploying This Guide</h1><p class="sub">GitHub Pages, Vercel, or ArcGIS Hub</p></div>
+  </div>
+</header>
+<div class="wrap">
+<div class="note"><strong>Straight answer on ArcGIS Hub:</strong> Hub can't directly host a multi-page interactive site like this one (it's a page-builder, not a static file host). The right pattern is: host this guide on GitHub Pages or Vercel, then <strong>embed it in Hub via an Embed content item (iframe)</strong> or link to it from a Hub page/card. That gets you both — a fast, real website AND a presence inside your Hub site.</div>
+<h2>Option A — GitHub Pages (simplest, free)</h2>
+<ol>
+<li>In the repo settings → <strong>Pages</strong> → set source to the branch/folder containing this site (e.g., <code>main</code> / <code>/field</code>)</li>
+<li>GitHub gives you a URL like <code>https://sstasio.github.io/rec-park-gis-indoors-program/field/</code></li>
+<li>No build step needed — this is plain HTML/CSS/JS</li>
+</ol>
+<h2>Option B — Vercel</h2>
+<ol>
+<li>Import the repo at <a href="https://vercel.com/new">vercel.com/new</a></li>
+<li>Framework preset: <strong>Other</strong> (static site)</li>
+<li>Deploy — you get a URL like <code>rec-park-gis-indoors-program.vercel.app/field/</code>, with the option to attach a custom domain later</li>
+</ol>
+<h2>Embedding in ArcGIS Hub</h2>
+<ol>
+<li>Once deployed (GitHub Pages or Vercel), copy the live URL</li>
+<li>In Hub site editor: add an <strong>Embed</strong> content card, paste the URL — Hub will iframe it in</li>
+<li>Alternatively, link individual pages (e.g., the Checklist page) directly from Resource/Initiative cards</li>
+</ol>
+<div class="note good"><strong>Recommendation:</strong> GitHub Pages for this internal field-guide site (free, zero maintenance) → embedded into your public/internal Hub site. Save Vercel for anything that later needs serverless functions or a build pipeline — this site doesn't.</div>
+<footer class="page-footer">Rec & Park GIS Indoors Program — field reference</footer>
+</div>
+<nav class="bottom">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="guide.html"><span class="ic">📋</span>Guide</a>
+  <a href="checklists.html"><span class="ic">✅</span>Checklist</a>
+  <a href="diagrams.html"><span class="ic">🗺️</span>Diagrams</a>
+  <a href="tech-stack.html"><span class="ic">🛠️</span>Tech</a>
+  <a href="storage.html"><span class="ic">☁️</span>Storage</a>
+</nav>
+</body>
+</html>
