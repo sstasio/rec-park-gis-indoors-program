@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCP Placement SOP | GIS Indoors</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">RP</div>
+    <div><h1>GCP Placement SOP</h1><p class="sub">Co-registering Polycam (interior) &amp; PIX4Dcatch (exterior) capture</p></div>
+  </div>
+</header>
+<div class="wrap">
+<p class="lede">Ground control points (GCPs) are what let an interior Polycam scan and an exterior PIX4Dcatch scan land in the same real-world coordinate space instead of two disconnected point clouds. This SOP defines where to place them, what to place, and how to tie them into our WKID 7132 control network.</p>
+
+<div class="note good">
+<strong>Core rule:</strong> place GCPs at the physical transition between capture systems — doorways, entry vestibules, loading docks, gate openings — plus intermediate points inside long spans. A target only helps if both systems can actually see it.
+</div>
+
+<h2>1. Why Doorways &amp; Transitions</h2>
+<p>Polycam (LiDAR/photogrammetry) and PIX4Dcatch (RTK-assisted photogrammetry) each build their own independent mesh with its own local origin unless anchored to shared ground truth. Doorways, vestibules, and gate openings are the literal boundary where one session ends and the other begins — so a target placed there is the only kind guaranteed to be visible to both crews on the same capture day.</p>
+
+<h2>2. GCP Target Spec</h2>
+<table>
+<thead><tr><th>Requirement</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td data-label="Requirement">High-contrast coded target (checkerboard or Pix4D-style coded marker)</td><td data-label="Why">Resolves cleanly in both LiDAR+RGB (Polycam) and pure photogrammetric feature matching (PIX4Dcatch)</td></tr>
+<tr><td data-label="Requirement">Matte finish, no gloss/laminate glare</td><td data-label="Why">Reflective surfaces kill LiDAR return and confuse photogrammetric feature detection</td></tr>
+<tr><td data-label="Requirement">Rigid, flat-mounted (not curled paper)</td><td data-label="Why">Warped targets shift the apparent center point between the two scans</td></tr>
+<tr><td data-label="Requirement">Minimum 15cm × 15cm</td><td data-label="Why">Needs to resolve at typical Polycam interior walking distance and PIX4Dcatch exterior standoff</td></tr>
+</tbody>
+</table>
+
+<h2>3. Where to Place GCPs</h2>
+<ul>
+<li><strong>Every building entry/exit doorway</strong> used during capture — place a pair: one just inside the threshold, one just outside, not a single target straddling the frame</li>
+<li><strong>Loading docks and gate openings</strong> where hardscape capture meets a building envelope</li>
+<li><strong>Hallway midpoints or intersections</strong> on any interior run longer than ~30–40m — a single doorway GCP won't correct LiDAR drift accumulated deep into a long corridor</li>
+<li><strong>Stairwell/elevator landings</strong> already being used as floor tie-in points in the field guide — treat these as GCP opportunities too, not just Polycam-to-Polycam transitions</li>
+</ul>
+<div class="note blue">
+<strong>Pairs, not singles:</strong> one GCP at a doorway fixes translation only. A pair (inside + outside, a few meters apart) lets both systems solve for scale and rotation independently before you trust the merge.
+</div>
+
+<h2>4. Tie Every GCP to Real Coordinates</h2>
+<p>Don't treat GCPs as purely visual anchors. Log an actual RTK-corrected coordinate for each one using the Bad Elf/Trimble/Eos receiver already in the field kit, tied to WKID 7132 — same rule as exterior control points in the main field guide. That's what turns "both systems can see it" into "both systems land in the same real-world coordinate," which matters once this feeds ArcGIS Indoors floor plans and needs to snap cleanly to Phase 2 exterior hardscape.</p>
+<ul>
+<li>Confirm <strong>RTK Fix</strong> (not Float) before logging any GCP coordinate</li>
+<li>Record GCP ID, coordinate, and the doorway/space it ties together in Survey123 alongside the facility record</li>
+<li>Use the same control point IDs when setting up both the Polycam scan and the PIX4Dcatch project for that session</li>
+</ul>
+
+<h2>5. Field Procedure</h2>
+<ul>
+<li>Set and log all doorway/transition GCPs <em>before</em> starting either scan — retrofitting targets after capture means one system missed them</li>
+<li>Place the exterior-side target first while RTK Fix is confirmed, then the interior-side target</li>
+<li>Start the PIX4Dcatch exterior walk from a logged GCP whenever possible, and close the loop back through it</li>
+<li>Start the Polycam interior scan from the same doorway pair, walking away from the threshold, not toward it</li>
+<li>Note which GCP pair ties which room to which exterior zone — this mapping is what makes the merge auditable later</li>
+</ul>
+
+<h2>6. QA Check</h2>
+<ul>
+<li>Tape-measure one known GCP-to-GCP distance and compare against both the live PIX4Dcatch model and the Polycam scan before leaving site</li>
+<li>If either system shows more than a few centimeters of disagreement at a GCP, re-shoot that transition before moving on — don't wait until office processing to find out</li>
+</ul>
+
+<h2>7. Common Pitfalls</h2>
+<div class="note">
+<strong>Watch for:</strong>
+<ul>
+<li>Single GCP per doorway instead of a pair — under-constrains scale/rotation</li>
+<li>Glossy or laminated targets — clean visually but return poorly in LiDAR</li>
+<li>Long interior runs with no intermediate GCP — accumulated Polycam drift won't get corrected by a doorway target 40m away</li>
+<li>GCP logged without an RTK Fix — a "visually correct" target with a bad coordinate is worse than no target, since it can silently pull the whole merge off</li>
+</ul>
+</div>
+
+<footer class="page-footer">Rec &amp; Park GIS Indoors Program — field reference</footer>
+</div>
+<nav class="bottom">
+  <a href="index.html"><span class="ic">🏠</span>Home</a>
+  <a href="guide.html"><span class="ic">📋</span>Guide</a>
+  <a href="checklists.html"><span class="ic">✅</span>Checklist</a>
+  <a href="diagrams.html"><span class="ic">🗺️</span>Diagrams</a>
+  <a href="tech-stack.html"><span class="ic">🛠️</span>Tech</a>
+  <a href="storage.html"><span class="ic">☁️</span>Storage</a>
+</nav>
+</body>
+</html>
